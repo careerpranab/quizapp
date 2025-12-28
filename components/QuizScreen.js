@@ -1,12 +1,15 @@
 function QuizScreen({ onFinish }) {
     try {
+        const questions = window.QUIZ_DATA || [];
         const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState(0);
         const [selectedOption, setSelectedOption] = React.useState(null);
         const [isAnswered, setIsAnswered] = React.useState(false);
         const [answers, setAnswers] = React.useState([]); // Store history of answers
 
-        const currentQuestion = QUIZ_DATA[currentQuestionIndex];
-        const isLastQuestion = currentQuestionIndex === QUIZ_DATA.length - 1;
+        if (!questions.length) return <div className="text-center p-4">No questions available.</div>;
+
+        const currentQuestion = questions[currentQuestionIndex];
+        const isLastQuestion = currentQuestionIndex === questions.length - 1;
 
         const handleOptionSelect = (optionId) => {
             if (isAnswered) return;
@@ -43,7 +46,7 @@ function QuizScreen({ onFinish }) {
 
         return (
             <div className="card p-6 sm:p-8" data-name="quiz-screen" data-file="components/QuizScreen.js">
-                <ProgressBar current={currentQuestionIndex + 1} total={QUIZ_DATA.length} />
+                <ProgressBar current={currentQuestionIndex + 1} total={questions.length} />
 
                 <div className="mb-8">
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">
