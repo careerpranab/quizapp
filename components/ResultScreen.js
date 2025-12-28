@@ -1,6 +1,8 @@
 function ResultScreen({ score, totalQuestions, history, onRestart }) {
     try {
-        const percentage = Math.round((score / totalQuestions) * 100);
+        // Fallback or ensure totalQuestions is valid to prevent division by zero
+        const safeTotal = totalQuestions || 1;
+        const percentage = Math.round((score / safeTotal) * 100);
         
         let message = "";
         let icon = "";
