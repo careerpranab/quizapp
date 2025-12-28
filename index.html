@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindSpark Quiz</title>
+    <meta name="description" content="Test your knowledge with our interactive quiz application.">
+    <meta name="keywords" content="quiz, trivia, education, test, knowledge">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="MindSpark Quiz">
+    <meta property="og:description" content="Test your knowledge with our interactive quiz application.">
+    <meta name="twitter:title" content="MindSpark Quiz">
+    <meta name="twitter:description" content="Test your knowledge with our interactive quiz application.">
+
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+
+    <style type="text/tailwindcss">
+    @layer theme {
+        :root {
+            /* Modern Indigo Theme */
+            --primary: #4f46e5;      /* Indigo 600 */
+            --primary-hover: #4338ca; /* Indigo 700 */
+            --primary-light: #e0e7ff; /* Indigo 100 */
+            
+            --bg-main: #f3f4f6;       /* Gray 100 */
+            --bg-card: #ffffff;
+            
+            --text-main: #111827;     /* Gray 900 */
+            --text-muted: #6b7280;    /* Gray 500 */
+            
+            --success: #10b981;       /* Emerald 500 */
+            --success-light: #d1fae5; /* Emerald 100 */
+            
+            --error: #ef4444;         /* Red 500 */
+            --error-light: #fee2e2;   /* Red 100 */
+            
+            --border: #e5e7eb;        /* Gray 200 */
+            --radius: 12px;
+        }
+    }
+
+    @layer base {
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    }
+
+    @layer components {
+        .btn {
+            @apply inline-flex items-center justify-center px-6 py-3 rounded-[var(--radius)] font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+        }
+        .btn-primary {
+            @apply bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)] focus:ring-[var(--primary)];
+        }
+        .btn-outline {
+            @apply border-2 border-[var(--primary)] text-[var(--primary)] hover:bg-[var(--primary-light)] focus:ring-[var(--primary)];
+        }
+        .card {
+            @apply bg-[var(--bg-card)] rounded-[var(--radius)] shadow-lg border border-[var(--border)];
+        }
+        /* Custom progress bar styles */
+        .progress-bar-container {
+            @apply w-full bg-gray-200 rounded-full h-2.5 overflow-hidden;
+        }
+        .progress-bar-fill {
+            @apply h-2.5 rounded-full bg-[var(--primary)] transition-all duration-500 ease-out;
+        }
+    }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <div id="root" class="flex-grow"></div>
+    
+    <!-- App Logic -->
+    <script type="text/babel" src="data/questions.js"></script>
+    <script type="text/babel" src="components/ProgressBar.js"></script>
+    <script type="text/babel" src="components/WelcomeScreen.js"></script>
+    <script type="text/babel" src="components/QuizScreen.js"></script>
+    <script type="text/babel" src="components/ResultScreen.js"></script>
+    <script type="text/babel" src="app.js"></script>
+</body>
+</html>
